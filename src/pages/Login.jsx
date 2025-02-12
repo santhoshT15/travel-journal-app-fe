@@ -23,7 +23,8 @@ function Login() {
     try {
       const res = await axios.post(
         "https://travel-journal-app-be.onrender.com/api/users/login",
-        credentials
+        credentials,
+        { withCredentials: true } // This sends cookies with the request
       );
       dispatch({
         type: "LOGIN_SUCCESS",
