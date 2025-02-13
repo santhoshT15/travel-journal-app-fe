@@ -11,7 +11,7 @@ function Home() {
   const [query, setQuery] = useState("");
   const { user, token } = useContext(AuthContext);
   const { data, loading } = useFetch(
-    `https://travel-journal-app-be.onrender.com/api/entries/author/${user}`,
+    `https://travel-journal-log-be.onrender.com/api/entries/author/${user}`,
     token
   );
   const keys = ["title", "location", "date"];

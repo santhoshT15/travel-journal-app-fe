@@ -38,7 +38,7 @@ function Create() {
           const data = new FormData();
           data.append("file", files);
           const signatureRes = await axios.get(
-            "https://travel-journal-app-be.onrender.com/get-signature"
+            "https://travel-journal-log-be.onrender.com/get-signature"
           );
 
           data.append("api_key", api_key);
@@ -73,7 +73,7 @@ function Create() {
 
     try {
       const response = await axios.post(
-        "https://travel-journal-app-be.onrender.com/api/entries/new",
+        "https://travel-journal-log-be.onrender.com/api/entries/new",
         newEntry,
         {
           withCredentials: false,

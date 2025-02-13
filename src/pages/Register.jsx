@@ -30,7 +30,7 @@ function Register() {
 
       data.append("file", file);
       const signatureRes = await axios.get(
-        "https://travel-journal-app-be.onrender.com/get-signature"
+        "https://travel-journal-log-be.onrender.com/get-signature"
       );
 
       data.append("api_key", api_key);
@@ -65,7 +65,7 @@ function Register() {
       };
       console.log(newUser);
       await axios.post(
-        "https://travel-journal-app-be.onrender.com/api/users/register",
+        "https://travel-journal-log-be.onrender.com/api/users/register",
         newUser
       );
       navigate("/login");

@@ -22,7 +22,7 @@ function Login() {
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post(
-        "https://travel-journal-app-be.onrender.com/api/users/login",
+        "https://travel-journal-log-be.onrender.com/api/users/login",
         credentials,
         { credentials: "include" }
       );

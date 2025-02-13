@@ -15,7 +15,7 @@ function View() {
   const id = location.pathname.split("/")[2];
   const { token } = useContext(AuthContext);
   const { data } = useFetch(
-    `https://travel-journal-app-be.onrender.com/api/entries/${id}`,
+    `https://travel-journal-log-be.onrender.com/api/entries/${id}`,
     token
   );
   const [slideNumber, setSlideNumber] = useState(0);
@@ -25,7 +25,7 @@ function View() {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `https://travel-journal-app-be.onrender.com/api/entries/${data._id}`
+        `https://travel-journal-log-be.onrender.com/api/entries/${data._id}`
       );
       navigate("/");
     } catch (err) {
