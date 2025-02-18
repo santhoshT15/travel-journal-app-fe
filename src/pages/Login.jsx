@@ -21,11 +21,9 @@ function Login({ url }) {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post(
-        url + "/api/users/login",
-        credentials,
-        { withCredentials: true } // This sends cookies with the request
-      );
+      const res = await axios.post(url + "/api/users/login", credentials, {
+        credentials: "include",
+      });
       dispatch({
         type: "LOGIN_SUCCESS",
         payload: res.data.user,
