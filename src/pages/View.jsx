@@ -86,7 +86,7 @@ function View({ url }) {
           <button className="del_button" onClick={handleDelete}>
             Delete
           </button>
-          <button onClick={() => navigate("/home")} className="del-button">
+          <button onClick={() => navigate("/")} className="del-button">
             Back
           </button>
         </div>
