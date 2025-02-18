@@ -5,7 +5,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import "../styles/login.css";
 
-function Login() {
+function Login({ url }) {
   const [credentials, setCredentials] = useState({
     email: undefined,
     password: undefined,
@@ -22,7 +22,7 @@ function Login() {
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post(
-        "https://travel-journal-app-be.onrender.com/api/users/login",
+        url + "/api/users/login",
         credentials,
         { withCredentials: true } // This sends cookies with the request
       );

@@ -10,23 +10,18 @@ import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons/faCircleArr
 import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "../styles/view.css";
 
-function View() {
+function View({ url }) {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const { token } = useContext(AuthContext);
-  const { data } = useFetch(
-    `https://travel-journal-app-be.onrender.com/api/entries/${id}`,
-    token
-  );
+  const { data } = useFetch(`${url}/api/entries/${id}`, token);
   const [slideNumber, setSlideNumber] = useState(0);
 
   const navigate = useNavigate();
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(
-        `https://travel-journal-app-be.onrender.com/api/entries/${data._id}`
-      );
+      await axios.delete(`${url}/api/entries/${data._id}`);
       navigate("/");
     } catch (err) {
       console.log(err);

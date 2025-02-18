@@ -7,11 +7,11 @@ import Card from "../components/Card";
 import { AuthContext } from "../authContext";
 import "../styles/home.css";
 
-function Home() {
+function Home({ url }) {
   const [query, setQuery] = useState("");
   const { user, token } = useContext(AuthContext);
   const { data, loading } = useFetch(
-    `https://travel-journal-app-be.onrender.com/api/entries/author/${user}`,
+    `${url}/api/entries/author/${user}`,
     token
   );
   const keys = ["title", "location", "date"];

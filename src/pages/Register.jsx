@@ -7,7 +7,7 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
 import "../styles/register.css";
 //import { upload } from '@testing-library/user-event/dist/upload';
 
-function Register() {
+function Register({ url }) {
   const navigate = useNavigate();
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
@@ -29,9 +29,7 @@ function Register() {
       const data = new FormData();
 
       data.append("file", file);
-      const signatureRes = await axios.get(
-        "https://travel-journal-app-be.onrender.com/get-signature"
-      );
+      const signatureRes = await axios.get(url + "/get-signature");
 
       data.append("api_key", api_key);
       data.append("timestamp", signatureRes.data.timestamp);
@@ -64,10 +62,7 @@ function Register() {
         profilePicture: profilePicture,
       };
       console.log(newUser);
-      await axios.post(
-        "https://travel-journal-app-be.onrender.com/api/users/register",
-        newUser
-      );
+      await axios.post(url + "/api/users/register", newUser);
       navigate("/login");
     } catch (err) {
       console.log(err);

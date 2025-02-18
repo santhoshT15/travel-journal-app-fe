@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import "../styles/create.css";
 
-function Create() {
+function Create({ url }) {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [files, setFiles] = useState("");
@@ -37,9 +37,7 @@ function Create() {
         Object.values(files).map(async (files) => {
           const data = new FormData();
           data.append("file", files);
-          const signatureRes = await axios.get(
-            "https://travel-journal-app-be.onrender.com/get-signature"
-          );
+          const signatureRes = await axios.get(url + "/get-signature");
 
           data.append("api_key", api_key);
           data.append("timestamp", signatureRes.data.timestamp);
@@ -72,13 +70,9 @@ function Create() {
     }
 
     try {
-      const response = await axios.post(
-        "https://travel-journal-app-be.onrender.com/api/entries/new",
-        newEntry,
-        {
-          withCredentials: false,
-        }
-      );
+      const response = await axios.post(url + "/api/entries/new", newEntry, {
+        withCredentials: false,
+      });
 
       navigate(`/view/${response?.data?._id}`);
     } catch (err) {
