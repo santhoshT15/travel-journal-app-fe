@@ -12,7 +12,7 @@ function App() {
   const { user } = useContext(AuthContext);
   const ProtectedRoute = ({ children }) => {
     if (!user) {
-      return <Login />;
+      return <Login url={url} />;
     } else {
       return children;
     }
